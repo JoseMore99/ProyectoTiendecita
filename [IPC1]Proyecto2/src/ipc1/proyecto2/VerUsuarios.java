@@ -62,6 +62,11 @@ public class VerUsuarios extends javax.swing.JFrame {
         jLabel1.setText("USUARIOS:");
 
         regre.setText("Regresar");
+        regre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                regreMouseClicked(evt);
+            }
+        });
 
         tablaUsu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -149,6 +154,12 @@ public class VerUsuarios extends javax.swing.JFrame {
         lbltarjeta.setText("No. Tarjeta: "+detalle.Targeta);
         
     }//GEN-LAST:event_btndetalleMouseClicked
+
+    private void regreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regreMouseClicked
+        Admin a = new Admin();
+        a.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_regreMouseClicked
 
     /**
      * @param args the command line arguments
