@@ -1,7 +1,7 @@
 package contenedor;
 //Importacion de libreria Scanner para capturar el teclado
 import java.util.Scanner;
-
+// probando git
 public class ClasePrincipal {
     //Metodo principal que se ejecutara al correr la aplicacion
     public static void main(String[] args){
