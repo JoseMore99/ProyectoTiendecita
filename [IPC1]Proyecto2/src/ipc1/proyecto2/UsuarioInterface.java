@@ -5,18 +5,58 @@
  */
 package ipc1.proyecto2;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Moreira Paz
  */
 public class UsuarioInterface extends javax.swing.JFrame {
 
-    /**
-     * Creates new form UsuarioInterface
-     */
+    DefaultTableModel modelo1; 
+    
     public UsuarioInterface() {
         initComponents();
         lblwelcom.setText("Hola, "+Login.Nameusu);
+        
+        modelo1 = new DefaultTableModel();
+        modelo1.addColumn("Producto");
+        modelo1.addColumn("Descripcion");
+        modelo1.addColumn("Precio normal");
+        modelo1.addColumn("Precio actual");
+        
+        this.tablainicio.setModel(modelo1);
+        
+        NodoProducto aux = Productos.LCP.inicio;
+        NodoOferta of;
+        
+       double normal, nuevo;
+        
+        for (int i = 0; i < Productos.LCP.size; i++) {
+            normal=aux.producto.precio;
+            of = Ofertas.LCO.cabeza;
+            while(of != null){
+                if(of.Oferta.idProd==aux.producto.id&&of.Oferta.prioridad==true){
+                    nuevo = normal - (normal*of.Oferta.descuento)/100;
+                   modelo1.addRow(new Object[]{"-P-"+aux.producto.nombre,aux.producto.descripcion,normal,nuevo});
+                }
+                of = of.siguiente;
+            }
+            aux = aux.siguiente;
+        }
+         for (int i = 0; i < Productos.LCP.size; i++) {
+            normal=aux.producto.precio;
+            of = Ofertas.LCO.cabeza;
+            while(of != null){
+                if(of.Oferta.idProd==aux.producto.id&&of.Oferta.prioridad==false){
+                  normal = normal - (normal*of.Oferta.descuento)/100;
+                   modelo1.addRow(new Object[]{aux.producto.nombre,aux.producto.descripcion,normal});
+                }
+                of = of.siguiente;
+            }
+            aux = aux.siguiente;
+        }
+        
     }
 
     /**
@@ -33,8 +73,10 @@ public class UsuarioInterface extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablainicio = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
+        btnpagar = new javax.swing.JButton();
+        btncarrito = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,18 +96,15 @@ public class UsuarioInterface extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablainicio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablainicio);
 
         jButton3.setText("Productos de Tienda");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -73,6 +112,10 @@ public class UsuarioInterface extends javax.swing.JFrame {
                 jButton3MouseClicked(evt);
             }
         });
+
+        btnpagar.setText("Pagar");
+
+        btncarrito.setText("añadir a carrito");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -82,17 +125,21 @@ public class UsuarioInterface extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(35, 35, 35)
-                        .addComponent(lblwelcom))
+                        .addComponent(lblwelcom)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnpagar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jButton1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 150, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btncarrito)
+                .addContainerGap(15, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3)
@@ -104,11 +151,17 @@ public class UsuarioInterface extends javax.swing.JFrame {
                 .addGap(13, 13, 13)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblwelcom)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(btnpagar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(138, 138, 138)
+                        .addComponent(btncarrito)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3))
         );
@@ -185,12 +238,14 @@ public class UsuarioInterface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btncarrito;
+    private javax.swing.JButton btnpagar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblwelcom;
+    private javax.swing.JTable tablainicio;
     // End of variables declaration//GEN-END:variables
 }
