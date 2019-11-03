@@ -166,17 +166,25 @@ public class Login extends javax.swing.JFrame {
         String admin ="ADMIN";
         String contra ="ADMIN";
         Admin a  = new Admin();
-        
+        UsuarioInterface U = new UsuarioInterface();
         String Pass = new String(pssusuario.getPassword());
+        try{
+        Usuario entrar;
+        entrar = Registro.LCU.buscar(txtusuario.getText());
         
         if(txtusuario.getText().equals(admin)&&pssusuario.getText().equals(contra)){
            a.setVisible(true);
             dispose();
+        }else if(entrar.contraseña.equals(Pass)){
+            U.setVisible(true);
+            dispose();
         }
         else{
+           JOptionPane.showMessageDialog(this, "Usuario inexistente"); 
+        }
+        } catch(Exception e){
             JOptionPane.showMessageDialog(this, "Usuario inexistente");
         }
-        
     }//GEN-LAST:event_btningresarMouseClicked
 
     private void btnregistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnregistrarMouseClicked

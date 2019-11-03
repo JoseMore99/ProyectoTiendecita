@@ -50,7 +50,7 @@ public class ListaCircularUsu {
         else{
         NodoUsuario aux= inicio;
         do{
-            if(aux.usuario.nusuario==usuario){
+            if(aux.usuario.nusuario.equals(usuario)){
              return aux.usuario;   
             }
             aux = aux.siguiente;
