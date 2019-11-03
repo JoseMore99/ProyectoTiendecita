@@ -7,13 +7,18 @@ package ipc1.proyecto2;
  */
 public class ListaColaOfer {
     NodoOferta cabeza;
-    static int tamaño=0;
+    static int size=0;
     
     public ListaColaOfer(){
         cabeza=null;
     }
     
+    public int tamaño(){
+        return size;
+    }
+    
     public void insertar(oferta OF){
+        size++;
         NodoOferta actual = new NodoOferta(OF);
         if(cabeza == null){
             cabeza = actual;
@@ -24,6 +29,11 @@ public class ListaColaOfer {
             }
             temporal.siguiente=actual;
         }
+    }
+    
+    public void eliminar(){
+        cabeza = cabeza.siguiente;
+        size--;
     }
     
 }

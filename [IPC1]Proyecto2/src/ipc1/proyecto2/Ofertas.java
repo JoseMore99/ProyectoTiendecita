@@ -11,9 +11,8 @@ package ipc1.proyecto2;
  */
 public class Ofertas extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Ofertas
-     */
+     public static ListaColaOfer LCO = new ListaColaOfer();
+             
     public Ofertas() {
         initComponents();
     }
@@ -47,10 +46,25 @@ public class Ofertas extends javax.swing.JFrame {
         });
 
         btnagregar.setText("Agregar");
+        btnagregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnagregarMouseClicked(evt);
+            }
+        });
 
         btnEliminar.setText("Eliminas");
+        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseClicked(evt);
+            }
+        });
 
         btnMostrar.setText("Mostrar");
+        btnMostrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMostrarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -114,6 +128,24 @@ public class Ofertas extends javax.swing.JFrame {
         a.setVisible(true);
         dispose();
     }//GEN-LAST:event_RegresarMouseClicked
+
+    private void btnagregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnagregarMouseClicked
+        AgregarOf ao = new AgregarOf();
+        ao.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnagregarMouseClicked
+
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
+        EliminarOf eo = new EliminarOf();
+        eo.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnEliminarMouseClicked
+
+    private void btnMostrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarMouseClicked
+        MostrarOf mo = new MostrarOf();
+        mo.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnMostrarMouseClicked
 
     /**
      * @param args the command line arguments
