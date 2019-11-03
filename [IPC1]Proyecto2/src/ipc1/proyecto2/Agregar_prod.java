@@ -40,6 +40,8 @@ public class Agregar_prod extends javax.swing.JFrame {
         txtExis = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        txtimage = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,32 +74,34 @@ public class Agregar_prod extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setText("Direccion de Imagen:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(txtname)
-                            .addComponent(txtExis, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPrecio)
-                            .addComponent(txtdesc))))
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addGap(23, 23, 23))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(51, 51, 51)
+                        .addComponent(jButton2))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(txtimage, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtname, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtdesc, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtPrecio, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtExis, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,14 +121,18 @@ public class Agregar_prod extends javax.swing.JFrame {
                     .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(txtExis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtExis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtimage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -160,6 +168,7 @@ public class Agregar_prod extends javax.swing.JFrame {
         agregado.existencia = Integer.parseInt(txtExis.getText());
         agregado.descripcion = txtdesc.getText();
         agregado.precio = Integer.parseInt(txtPrecio.getText());
+        agregado.Imagen = txtimage.getText();
         
         Productos.LCP.insertar(agregado);
         
@@ -167,6 +176,7 @@ public class Agregar_prod extends javax.swing.JFrame {
         txtExis.setText("");
         txtPrecio.setText("");
         txtdesc.setText("");
+        txtimage.setText("");
         
     }//GEN-LAST:event_jButton1MouseClicked
 
@@ -210,6 +220,7 @@ public class Agregar_prod extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -217,6 +228,7 @@ public class Agregar_prod extends javax.swing.JFrame {
     private javax.swing.JTextField txtExis;
     private javax.swing.JTextField txtPrecio;
     private javax.swing.JTextField txtdesc;
+    private javax.swing.JTextField txtimage;
     private javax.swing.JTextField txtname;
     // End of variables declaration//GEN-END:variables
 }

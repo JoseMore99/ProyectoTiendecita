@@ -5,6 +5,8 @@
  */
 package ipc1.proyecto2;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -55,6 +57,7 @@ DefaultTableModel modelo;
         lblprecio = new javax.swing.JLabel();
         lblexis = new javax.swing.JLabel();
         btndetalle = new javax.swing.JButton();
+        lblimagen = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,6 +99,8 @@ DefaultTableModel modelo;
             }
         });
 
+        lblimagen.setText(".");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -106,13 +111,15 @@ DefaultTableModel modelo;
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btndetalle)
-                            .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
-                            .addComponent(lbldesc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblprecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblexis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 70, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btndetalle)
+                                .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                                .addComponent(lbldesc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblprecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblexis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lblimagen, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 46, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -137,9 +144,13 @@ DefaultTableModel modelo;
                         .addGap(18, 18, 18)
                         .addComponent(lblprecio)
                         .addGap(18, 18, 18)
-                        .addComponent(lblexis))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(10, Short.MAX_VALUE))
+                        .addComponent(lblexis)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblimagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -174,7 +185,12 @@ DefaultTableModel modelo;
         lbldesc.setText("Descripcion: " + buscar.descripcion);
         lblexis.setText("Existencia: "+ buscar.existencia);
         lblprecio.setText("Precio: Q"+ buscar.precio);
-        System.out.println("prueba de git hub");
+        
+        ImageIcon imagen = new ImageIcon(getClass().getResource(buscar.Imagen));
+        ImageIcon icono = new ImageIcon(imagen.getImage().getScaledInstance(
+                lblimagen.getWidth(), lblimagen.getHeight(), Image.SCALE_DEFAULT));
+        
+        lblimagen.setIcon(icono);
     }//GEN-LAST:event_btndetalleMouseClicked
 
     
@@ -224,6 +240,7 @@ DefaultTableModel modelo;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lbldesc;
     private javax.swing.JLabel lblexis;
+    private javax.swing.JLabel lblimagen;
     private javax.swing.JLabel lblprecio;
     // End of variables declaration//GEN-END:variables
 }
